@@ -30,7 +30,7 @@ public class ImportJobExecutionListener extends JobExecutionListenerSupport {
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             log.info("Import job completed!! Time to verify the results");
 
-            List<Contact> contactList = jdbcTemplate.query("SELECT name, imgurl FROM contact",
+            List<Contact> contactList = jdbcTemplate.query("SELECT name, url FROM contact",
                     (rs, row) -> new Contact(
                             rs.getString(1),
                             rs.getString(2))
