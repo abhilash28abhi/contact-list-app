@@ -25,7 +25,7 @@ public class ContactListController {
     public ResponseEntity<?> getContactDetails(
             @RequestParam(value = "page", defaultValue = "0", required = false) int page,
             @RequestParam(value = "size", defaultValue = "20", required = false) int pageSize) throws Exception {
-        log.info("Invoked getContactDetails method with page : {} and pageSize : {}", page, pageSize);
+        log.debug("Invoked getContactDetails method with page : {} and pageSize : {}", page, pageSize);
         Page<Contact> pageResults = contactListManager.getContactDetails(page, pageSize);
         if (pageResults.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
