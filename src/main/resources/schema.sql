@@ -1,4 +1,6 @@
 CREATE TABLE contact (
+   id INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(50),
-   imgurl VARCHAR(200)
+   imgurl VARCHAR(200),
+   PRIMARY KEY (id)
 );
