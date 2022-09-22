@@ -59,14 +59,14 @@ public class BatchConfig {
     public JdbcBatchItemWriter<Contact> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Contact>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO contact ( name, url) VALUES (:name, :url)")
+                .sql("INSERT INTO contact ( name, imgurl) VALUES (:name, :url)")
                 .dataSource(dataSource)
                 .build();
     }
 
     @Bean
     public Job importUserJob(ImportJobExecutionListener listener, Step step1) {
-        return jobBuilderFactory.get("importUserJob")
+        return jobBuilderFactory.get("importContactJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .flow(step1)
