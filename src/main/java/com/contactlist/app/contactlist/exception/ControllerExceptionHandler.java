@@ -25,4 +25,16 @@ public class ControllerExceptionHandler {
 
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(DataViolationException.class)
+    public ResponseEntity<HttpErrorResponse> dataViolationException(Exception ex, WebRequest request) {
+        log.info("Handle data violation exception : {}", ex);
+        HttpErrorResponse errorResponse = new HttpErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }

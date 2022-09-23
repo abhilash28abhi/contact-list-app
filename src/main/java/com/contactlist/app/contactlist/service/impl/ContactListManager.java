@@ -17,9 +17,13 @@ public class ContactListManager implements IContactListManager {
     @Autowired
     private ContactListRepository contactListRepository;
 
-    @Override public Page<Contact> getContactDetails(int page, int size) {
-        log.debug("Entered getContactDetails method with page : {} and size : {}", page, size);
-        Pageable pageRequest = PageRequest.of(page, size);
-        return contactListRepository.findAll(pageRequest);
+    @Override public Page<Contact> getContactDetails(Pageable paging) {
+        log.debug("Entered getContactDetails method with page : {} and size : {}", paging.getPageNumber(), paging.getPageSize());
+        return contactListRepository.findAll(paging);
+    }
+
+    @Override public Page<Contact> getContactDetailsByName(String name, Pageable paging) {
+        log.debug("Entered getContactDetailsByName method with search term : {} , page : {} and size : {}", name, paging.getPageNumber(), paging.getPageSize());
+        return contactListRepository.findByNameContaining(name, paging);
     }
 }
