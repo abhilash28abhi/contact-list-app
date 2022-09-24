@@ -3,6 +3,12 @@ package com.contactlist.app.contactlist.controller;
 import com.contactlist.app.contactlist.api.ContactListResponse;
 import com.contactlist.app.contactlist.exception.DataViolationException;
 import com.contactlist.app.contactlist.service.IContactListManager;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -20,8 +26,17 @@ public class ContactListController {
 
     @Autowired private IContactListManager contactListManager;
 
+    @Operation(summary = "Get all the contacts based on current page and size. If name is provided then the contacts are returned containing the provided name.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok", content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ContactListResponse.class))}),
+            @ApiResponse(responseCode = "204", description = "No content"),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error"),
+    })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getContactDetails(
+            @Parameter(description = "name of the contact to be searched")
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "page", defaultValue = "0", required = false) int page,
             @RequestParam(value = "size", defaultValue = "20", required = false) int pageSize) throws Exception {
