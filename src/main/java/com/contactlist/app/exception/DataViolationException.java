@@ -1,7 +1,7 @@
 package com.contactlist.app.exception;
 
 /**
- * Custom exception for data violation errors
+ * Custom exception class to indicate data violation errors for user input values.
  */
 public class DataViolationException extends RuntimeException {
 

@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Bean which acts as POJO for the table fields
+ * Entity bean which acts as POJO for the table columns.
  */
 @Getter
 @Setter

@@ -22,6 +22,9 @@ import org.springframework.core.io.ClassPathResource;
 
 import javax.sql.DataSource;
 
+/**
+ * Spring batch job configuration file having different beans configuration.
+ */
 @EnableBatchProcessing
 @Configuration
 public class BatchConfig {

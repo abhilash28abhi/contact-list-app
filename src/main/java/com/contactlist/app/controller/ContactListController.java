@@ -26,6 +26,15 @@ public class ContactListController {
 
     @Autowired private IContactListManager contactListManager;
 
+    /**
+     * API which gets the contact details based on name if provided else it fetches all the contacts.
+     * There is an option to paginate the response based on page number and size of the page.
+     * @param name
+     * @param page
+     * @param pageSize
+     * @return
+     * @throws Exception
+     */
     @Operation(summary = "Get all the contacts based on current page and size. If name is provided then the contacts are returned containing the provided name.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ok", content = {@Content(mediaType = "application/json",

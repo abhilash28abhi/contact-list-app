@@ -11,6 +11,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.Date;
 
+/**
+ * Exception handler class for various exceptions across the controllers.
+ */
 @RestControllerAdvice
 @Slf4j
 public class ControllerExceptionHandler {

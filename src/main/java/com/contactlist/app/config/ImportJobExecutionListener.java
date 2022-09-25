@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Listener component which listens to the batch import completion.
+ * Listener component which listens to the batch import completion process.
  */
 @Component
 @Slf4j
