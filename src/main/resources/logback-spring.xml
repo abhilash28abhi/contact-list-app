@@ -35,7 +35,7 @@
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
-    <logger name="com.contactlist.app" level="DEBUG" additivity="false">
+    <logger name="com.contactlist.app" level="ERROR" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
