@@ -55,8 +55,10 @@ public class ContactListController {
         ContactListResponse contactListResponse = null;
 
         if (name == null || "".equals(name)) {
+            //if name is not provided, fetch all contacts
             contactListResponse = contactListManager.getContactDetails(paging);
         } else {
+            //fetch contacts with provided name
             contactListResponse = contactListManager.getContactDetailsByName(name, paging);
         }
 
