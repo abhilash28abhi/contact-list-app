@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/v1/contacts")
 @Slf4j
 public class ContactListController {
+    
 
     @Autowired private IContactListManager contactListManager;
 
