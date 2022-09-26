@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ContactListController {
 
-    
     @Autowired private IContactListManager contactListManager;
 
     /**
